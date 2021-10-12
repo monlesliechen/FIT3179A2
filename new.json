@@ -6,8 +6,8 @@
   "vconcat": [
     {
       "width": 800,
-      "height": 400,
-      "title": "FireEvent",
+      "height": 500,
+      "title": "Fire Event",
       "projection": {
         "parallels": [
           -16,
@@ -130,7 +130,8 @@
     },
     {
       "width": 800,
-      "height": 60,
+      "height": 90,
+      "title": "Fire Over Time",
       "mark": "line",
       "params": [
         {
