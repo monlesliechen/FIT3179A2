@@ -14,10 +14,10 @@ p{
 }
 
 .map{
-    /* margin: 0 auto; */
-    /* width: 50%; */
-    display: flex;
+    margin: 0 auto;
+    width: 50%;
+    
+    /* display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    /* align-items: center; */
+    justify-content: space-evenly; */
 }
