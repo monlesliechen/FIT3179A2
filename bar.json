@@ -1,0 +1,59 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 365,
+    "height": 365,
+    "title": "Average rating between day and night",
+    "data": {
+        "values": [
+            {
+                "daynight": "day",
+                "Avg_Rating": 348
+            },
+            {
+                "daynight": "night",
+                "Avg_Rating": 323
+            }
+        ]
+    },
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field": "daynight",
+            "type": "nominal",
+            "axis": {
+                "labelAngle": 0
+            }
+        },
+        "y": {
+            "field": "Avg_Rating",
+            "type": "quantitative"
+        },
+        "color": {
+            "field": "daynight",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+                "domain": [
+                    "day",
+                    "night"
+                ],
+                "range": [
+                    "#fde08f",
+                    "#b50429"
+                ]
+            }
+        },
+        "tooltip": [
+            {
+                "field": "daynight",
+                "title": "Daynight",
+                "type": "nominal"
+            },
+            {
+                "field": "Avg_Rating",
+                "title": "Rating",
+                "type": "quantitative"
+            }
+        ]
+    }
+}

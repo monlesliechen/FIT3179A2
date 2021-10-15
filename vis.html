@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-    <script src="aus-vis.js"></script>
+    <script src="vega_vis.js"></script>
     <title>Australia Fire Event</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
         integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
@@ -24,10 +24,61 @@
 </head>
 
 <body>
-    <h1>Australia Fire Event from 2019-01 to 2020-11</h1>
-    <p>Australia fire event has always been a big problem. We collected fire data from Jan 2019 to Nov 2020 and
-        visualize the data to analyse and improve our solutions. </p>
-    <div class="map"></div>
+    <!-- Img -->
+    <div class="img">
+        <img src="img/images.jpeg" />
+    </div>
+
+    <!-- Header -->
+    <h1>Australia Fire Events from 2019-10 to 2020-01</h1>
+    <p>Australia fire event has always been a big problem. <br>The bushfires burned more than <span class="bold">46
+            million</span> acres (<span class="bold">72,000
+            square miles</span>) – roughly the same area as the entire country of Syria. <br>We collected fire data from
+        <span class="bold">Oct 2019 to Jan 2020</span> and visualize the data to analyse and improve our solutions.
+
+    </p>
+    <hr>
+    <!-- map and line chart -->
+    <!-- summary -->
+    <p>
+        The map below tells us the locations of each fire event and how severe the event is. We can see from the graph
+        that the majority of the fire area is located at the costal area. <br>You can select a particular time period at
+        the bottom
+        line chart as a time brush, the fire events that happened between this period will reflect on the map and
+        highlight
+        the worst rating in that period.
+        The line chart at the bottom implies that the majority of fire events happened during summer. Especially the day
+        around New Year.
+        <br>A clearly rise as the temperature goes higher at <span class="bold">06 Nov 2019 and 01 Dec 2019.</span>
+    </p>
+
+    <div class="graph">
+        <div id="map"></div>
+
+    </div>
+    <!-- pie and bar -->
+
+    <div class="space"></div>
+    <hr>
+    <p>
+        These two graphs tell us the distribution of fire incidents during the day. The probability
+        of a fire at night is almost half of that during the day. <br>Surprisingly, the night did not help
+        us control the fire well. Despite the temperature drop, the fire rating is still high.
+    </p>
+    <div class="graph">
+        <div id="pie"></div>
+        <div id="bar"></div>
+    </div>
+
+    <p>
+        <br><span class="bold_text">Dataset Source from:</span>
+        <a href="https://www.kaggle.com/carlosparadis/fires-from-space-australia-and-new-zeland">
+            <span class="bold">kaggle</span>
+        </a>
+        <br><span>Author: Bokai Chen</span>
+        <br><span>Email: bche0017@student.monash.edu</span>
+    </p>
+
 </body>
 
 </html>

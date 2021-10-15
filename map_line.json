@@ -5,197 +5,146 @@
   },
   "vconcat": [
     {
-      "hconcat": [
+      "width": 1200,
+      "height": 900,
+      "title": "Fire Event",
+      "projection": {
+        "parallels": [
+          -16,
+          -37
+        ],
+        "rotate": [
+          -134,
+          0,
+          0
+        ],
+        "type": "conicEqualArea"
+      },
+      "layer": [
         {
-          "width": 800,
-          "height": 500,
-          "title": "Fire Event",
-          "projection": {
-            "parallels": [
-              -16,
-              -37
-            ],
-            "rotate": [
-              -134,
-              0,
-              0
-            ],
-            "type": "conicEqualArea"
+          "data": {
+            "url": "https://raw.githubusercontent.com/monlesliechen/data-analysis/main/AUS_TOPO.json",
+            "format": {
+              "type": "topojson",
+              "feature": "australian-states"
+            }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": "lightgrey",
+            "stroke": "white"
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": {
+                "param": "time_brush"
+              }
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+            },
+            "color": {
+              "field": "brightness",
+              "title": "Rating",
+              "type": "quantitative",
+              "scale": {
+                "scheme": "yelloworangered"
+              }
+            },
+            "tooltip": [
+              {
+                "field": "acq_date",
+                "title": "Date",
+                "type": "temporal"
+              },
+              {
+                "field": "brightness",
+                "title": "Rating",
+                "type": "quantitative"
+              }
+            ]
           },
           "layer": [
             {
-              "data": {
-                "url": "https://raw.githubusercontent.com/monlesliechen/data-analysis/main/AUS_TOPO.json",
-                "format": {
-                  "type": "topojson",
-                  "feature": "australian-states"
+              "mark": "circle",
+              "encoding": {
+                "size": {
+                  "field": "brightness",
+                  "type": "quantitative",
+                  "legend": null
                 }
-              },
-              "mark": {
-                "type": "geoshape",
-                "fill": "grey",
-                "stroke": "white"
               }
             },
             {
               "transform": [
                 {
-                  "filter": {
-                    "param": "time_brush"
-                  }
+                  "window": [
+                    {
+                      "op": "rank",
+                      "as": "ranking"
+                    }
+                  ],
+                  "sort": [
+                    {
+                      "field": "brightness",
+                      "order": "descending"
+                    }
+                  ]
+                },
+                {
+                  "filter": "datum.ranking == 1"
+                },
+                {
+                  "calculate": "'The worst fire rating of the selected period: ' + datum['brightness']",
+                  "as": "text_annotation"
                 }
               ],
-              "encoding": {
-                "longitude": {
-                  "field": "longitude",
-                  "type": "quantitative"
-                },
-                "latitude": {
-                  "field": "latitude",
-                  "type": "quantitative"
-                },
-                "color": {
-                  "field": "brightness",
-                  "type": "quantitative",
-                  "scale": {
-                    "scheme": "reds"
-                  }
-                },
-                "tooltip": [
-                  {
-                    "field": "acq_date",
-                    "type": "temporal"
-                  },
-                  {
-                    "field": "brightness",
-                    "type": "quantitative"
-                  }
-                ]
-              },
               "layer": [
                 {
                   "mark": {
-                    "type": "circle",
-                    "opacity": 0.4,
-                    "size": 15
+                    "type": "text",
+                    "align": "left",
+                    "dx": 5
+                  },
+                  "encoding": {
+                    "text": {
+                      "field": "text_annotation"
+                    }
                   }
                 },
                 {
-                  "transform": [
-                    {
-                      "window": [
-                        {
-                          "op": "rank",
-                          "as": "ranking"
-                        }
-                      ],
-                      "sort": [
-                        {
-                          "field": "brightness",
-                          "order": "descending"
-                        }
-                      ]
-                    },
-                    {
-                      "filter": "datum.ranking == 1"
-                    },
-                    {
-                      "calculate": "'The worst fire event of the selected period: ' + datum['brightness']",
-                      "as": "text_annotation"
-                    }
-                  ],
-                  "layer": [
-                    {
-                      "mark": {
-                        "type": "text",
-                        "align": "left",
-                        "dx": 4
-                      },
-                      "encoding": {
-                        "text": {
-                          "field": "text_annotation"
-                        }
-                      }
-                    },
-                    {
-                      "mark": {
-                        "type": "point",
-                        "shape": "cross",
-                        "size": 105
-                      }
-                    }
-                  ]
+                  "mark": {
+                    "type": "point",
+                    "shape": "cross",
+                    "size": 200
+                  }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "width": 200,
-          "height": 200,
-          "title": "Fire Event Distribution",
-          "data": {
-            "values": [
-              {
-                "daynight": "day",
-                "count": 113467
-              },
-              {
-                "daynight": "night",
-                "count": 70126
-              }
-            ]
-          },
-          "encoding": {
-            "theta": {
-              "field": "count",
-              "type": "quantitative",
-              "stack": true
-            },
-            "color": {
-              "field": "daynight",
-              "type": "nominal",
-              "legend": null,
-              "scale": {
-                "domain": [
-                  "day",
-                  "night"
-                ],
-                "range": [
-                  "#57C2FB",
-                  "#0C1E69"
-                ]
-              }
-            }
-          },
-          "layer": [
-            {
-              "mark": {
-                "type": "arc",
-                "outerRadius": 80
-              }
-            },
-            {
-              "mark": {
-                "type": "text",
-                "radius": 90
-              },
-              "encoding": {
-                "text": {
-                  "field": "daynight",
-                  "type": "nominal"
-                }
-              }
             }
           ]
         }
       ]
     },
     {
-      "width": 1000,
-      "height": 90,
+      "width": 1200,
+      "height": 200,
       "title": "Fire Over Time",
-      "mark": "line",
+      "mark": {
+        "type": "line",
+        "point": {
+          "filled": false,
+          "fill": "white"
+        }
+      },
       "params": [
         {
           "name": "time_brush",
@@ -210,10 +159,10 @@
       "encoding": {
         "x": {
           "field": "acq_date",
-          "timeUnit": "yearmonth",
+          "timeUnit": "yearmonthdate",
           "axis": {
             "title": "",
-            "tickCount": 5,
+            "tickCount": 10,
             "grid": false
           }
         },
@@ -227,15 +176,28 @@
             ]
           },
           "axis": {
-            "tickCount": 3,
+            "tickCount": 10,
             "grid": false
           }
         },
+        "tooltip": [
+          {
+            "aggregate": "count",
+            "title": "Count",
+            "type": "quantitative"
+          },
+          {
+            "field": "acq_date",
+            "title": "Date",
+            "type": "temporal"
+          }
+        ],
         "color": {
           "field": "count",
           "scale": {
             "scheme": "reds"
-          }
+          },
+          "legend": null
         }
       }
     }

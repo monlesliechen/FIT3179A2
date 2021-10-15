@@ -1,23 +1,54 @@
 /* font-family: 'Noto Sans Mono', monospace;
 font-family: 'Nunito', sans-serif;
 font-family: 'Ubuntu', sans-serif; */
+html,body{
+    background-color: #f6ead2;
+}
 
+.img img{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
 
 h1{
     text-align: center;
+    font-size:50px;
+    color: #ff5c33;
     font-family: 'Noto Sans Mono', monospace;
 }
 
 p{
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    margin-left: 250px;
+    margin-right: 250px;
 }
 
-.map{
-    margin: 0 auto;
-    width: 50%;
+.graph{
+    text-align: center;
+    padding-bottom: 20px;
     
     /* display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly; */
 }
+
+/* self-defined Style */
+.bold{
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+}
+
+.space{ margin-top: 100px;}
+.hr {
+    border:none;
+    border-top:1px dashed #f00;
+    color:#fff;
+    background-color:#fff;
+    height:1px;
+    width:50%;
+  }

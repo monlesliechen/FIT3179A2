@@ -1,0 +1,61 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 400,
+    "height": 400,
+    "title": "Fire Event Distribution",
+    "data": {
+        "values": [
+            {
+                "daynight": "day:61.8%",
+                "count": 113467
+            },
+            {
+                "daynight": "night:38.2%",
+                "count": 70126
+            }
+        ]
+    },
+    "encoding": {
+        "theta": {
+            "field": "count",
+            "type": "quantitative",
+            "stack": true
+        },
+        "color": {
+            "field": "daynight",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+                "domain": [
+                    "day:61.8%",
+                    "night:38.2%"
+                ],
+                "range": [
+                    "#fde08f",
+                    "#b50429"
+                ]
+            }
+        }
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "arc",
+                "outerRadius": 80
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "radius": 120,
+                "fontSize": 15
+            },
+            "encoding": {
+                "text": {
+                    "field": "daynight",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}
