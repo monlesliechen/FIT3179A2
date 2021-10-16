@@ -41,13 +41,13 @@
         {
             "mark": {
                 "type": "arc",
-                "outerRadius": 80
+                "outerRadius": 140
             }
         },
         {
             "mark": {
                 "type": "text",
-                "radius": 120,
+                "radius": 170,
                 "fontSize": 15
             },
             "encoding": {
